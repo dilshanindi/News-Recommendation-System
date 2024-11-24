@@ -1,84 +1,74 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class User {
-    private String fullName;
+    private String name;
     private String email;
     private String password;
-    private List<String> readingHistory;  // List of article titles or IDs read by the user
-    private Set<String> preferences;      // Preferred categories of articles
-    private List<String> likedArticles;   // Articles liked by the user
-    private List<String> skippedArticles; // Articles skipped by the user
+    private Set<String> preferences;
 
     // Constructor
-    public User(String fullName, String email, String password) {
-        this.fullName = fullName;
+    public User(String name, String email, String password) {
+        this.name = name;
         this.email = email;
         this.password = password;
-        this.readingHistory = new ArrayList<>();
         this.preferences = new HashSet<>();
-        this.likedArticles = new ArrayList<>();
-        this.skippedArticles = new ArrayList<>();
     }
 
-    // Getter and Setter methods
-    public String getFullName() {
-        return fullName;
+    // Getter for name
+    public String getName() {
+        return name;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    // Setter for name
+    public void setName(String name) {
+        this.name = name;
     }
 
+    // Getter for email
     public String getEmail() {
         return email;
     }
 
+    // Setter for email
     public void setEmail(String email) {
         this.email = email;
     }
 
+    // Getter for password
     public String getPassword() {
         return password;
     }
 
+    // Setter for password
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public List<String> getReadingHistory() {
-        return readingHistory;
-    }
-
-    public void addToReadingHistory(String article) {
-        this.readingHistory.add(article);
-    }
-
+    // Getter for preferences
     public Set<String> getPreferences() {
         return preferences;
     }
 
-    public void addToPreferences(String category) {
-        this.preferences.add(category);
+    // Add a preference
+    public void addPreference(String preference) {
+        this.preferences.add(preference);
     }
 
-    public List<String> getLikedArticles() {
-        return likedArticles;
+    // Remove a preference
+    public void removePreference(String preference) {
+        this.preferences.remove(preference);
     }
 
-    public void likeArticle(String article) {
-        this.likedArticles.add(article);
-    }
-
-    public List<String> getSkippedArticles() {
-        return skippedArticles;
-    }
-
-    public void skipArticle(String article) {
-        this.skippedArticles.add(article);
+    // Override toString for better debugging
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", preferences=" + preferences +
+                '}';
     }
 }
